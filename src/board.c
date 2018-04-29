@@ -63,3 +63,48 @@ void makeboard (char a[][9])
 	a[8][8]='h';
 }
 
+void moveboard (char a[][9])
+{
+    FILE *fw = fopen("board.txt", "wt");
+    char str[5];
+    char temp;
+    char sym[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+    char num[] = {'1', '2', '3', '4', '5', '6', '7', '8'};
+    int i, j, d, y;
+    while(1)
+    {
+        scanf("%s", str);
+        if(strcmp(str, "stop") == 0) break;
+        fprintf(fw, "%s\n", str);
+
+        for(int m = 0; m < 8; m++)
+        {
+            if(str[0] == sym[m])
+                j = 1 + m;
+            if(str[1] == num[m])
+                i = 7 - m;
+            if(str[3] == sym[m])
+                d = 1 + m;
+            if(str[4] == num[m])
+                y = 7 - m;
+        }
+        if(!(j < 9 && j >= 1 && i < 9 && i >= 1 && d < 9 && d >= 1 && y < 9 && y >= 1))
+            printf("\nERROR\n");
+        else
+        {
+            temp = a[i][j];
+            a[i][j] = a[y][d];
+            a[y][d] = temp;
+            for(i = 0; i < 9; i++)
+            {
+                for(j = 0; j < 9; j++)
+                fprintf(fw, "%c ", a[i][j]);
+                fprintf(fw, "\n");
+            }
+        j = 10; i = 10; d = 10; y = 10;
+        }
+
+        printboard (a);
+    }
+    fclose(fw);
+}
