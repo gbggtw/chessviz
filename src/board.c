@@ -6,8 +6,13 @@ void makeboard (char a[][9])
 {
     int i, j;
     for(i = 0; i < 9; i++)
+      {
         for(j = 0; j < 9; j++)
+	  {
 			a[i][j] = ' ';
+
+	  }
+      }
 	a[0][0]='8';
 	a[1][0]='7';
 	a[2][0]='6';
