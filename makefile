@@ -1,5 +1,15 @@
-main: build build/main.o build/board.o build/board_print.o
-	gcc  build/main.o build/board.o build/board_print.o -o bin/main
+main: bin/main
+
+test: bin/main-test
+
+bin/main: build/main.o build/board.o build/board_print.o
+	gcc -Wall -Werror build/main.o build/board.o build/board_print.o -o bin/main
+
+bin/main-test: build/main-test.o build/board.o build/board_print.o
+	gcc -Wall -Werror build/main-test.o build/board.o build/board_print.o -o bin/main-test
+
+build/main-test.o: test/main.c
+	gcc -std=c99 -I thirdparty -I scr -c test/main.c -o build/main-test.o
 
 build/main.o: src/main.c
 	gcc -std=c99 -Wall -Werror -c src/main.c -o build/main.o
