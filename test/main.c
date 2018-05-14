@@ -6,13 +6,13 @@ char a[9][9];
 
 CTEST(Syntax, Correct_Syntax_Check)
 {
-	bool result = moveboard(a, "e20-e40");
+	bool result = moveboard(a, "e2-e4");
 	ASSERT_FALSE(result);
 }
 
 CTEST(Syntax, Incorrect_Syntax_Check)
 {
-	bool result = moveboard(a, "Pb2-b4");
+	bool result = moveboard(a, "b22-b4");
 	ASSERT_FALSE(result);
 }
 
@@ -24,7 +24,7 @@ CTEST (Syntax, Incorrect_Figure_Move)
 
 CTEST (Syntax, Incorrect_Movemet_Split)
 {
-	bool result = moveboard(a, "d1=d3");
+	bool result = moveboard(a, "d1-d3");
 	ASSERT_FALSE(result);
 }
 
