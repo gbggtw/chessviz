@@ -6,7 +6,7 @@ char a[9][9];
 
 CTEST(Syntax, Correct_Syntax_Check)
 {
-	bool result = moveboard(a, "e2-e4");
+	bool result = moveboard(a, "e12-e4");
 	ASSERT_FALSE(result);
 }
 
